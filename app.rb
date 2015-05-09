@@ -2,6 +2,8 @@ require 'sinatra'
 require 'json'
 require_relative 'znc_config'
 
+configure { set :server, :puma }
+
 get '/*' do
   redirect to("https://kiwiirc.com/client?settings=301a91fd4e7cc2f75afd7c246de9dd41")
 end
