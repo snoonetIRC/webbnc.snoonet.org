@@ -7,6 +7,9 @@ threads 1, 6
 app_dir = File.expand_path("../..", __FILE__)
 temp_dir = "/tmp"
 
+# Daemonize puma
+daemonize true
+
 # Default to production
 environment "production"
 
