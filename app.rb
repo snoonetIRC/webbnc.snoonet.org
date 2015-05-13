@@ -5,11 +5,11 @@ require_relative 'znc_config'
 configure { set :server, :puma }
 
 get '/*' do
-  redirect to("https://kiwiirc.com/client?settings=301a91fd4e7cc2f75afd7c246de9dd41")
+  redirect to('https://kiwiirc.com/client?settings=301a91fd4e7cc2f75afd7c246de9dd41')
 end
 
 post '/request' do
-  @znc_config = ZncConfig.new("../.znc/configs/znc-web-access.conf")
+  @znc_config = ZncConfig.new('../.znc/configs/znc-web-access.conf')
 
   response = {
     'server' => 'bnc.snoonet.org',
@@ -17,12 +17,12 @@ post '/request' do
     'ssl' => true
   }
 
-  if !params.has_key?('user') || !params.has_key?('password')
+  unless params.key?('user') && params.key?('password')
     response['error'] = 'Missing parameter'
     return JSON.generate(response)
   end
 
-  if !@znc_config.user_exists(params['user'].downcase)
+  unless @znc_config.user_exists(params['user'].downcase)
     response['error'] = 'User not found'
     return JSON.generate(response)
   end
@@ -31,7 +31,7 @@ post '/request' do
     response['error'] = 'Invalid login'
   else
     response['username'] = params['user'].downcase
-    response['password'] = params['user'] + "/Snoonet:" + params['password']
+    response['password'] = params['user'] + '/Snoonet:' + params['password']
   end
 
   return JSON.generate(response)
