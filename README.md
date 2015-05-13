@@ -1,8 +1,12 @@
 # webbnc.snoonet.org
 
-This is just a little web service that provides the correct data to Kiwi IRC for it to be able to connect users to our bouncer service. The app redirects all GET requests to the Kiwi IRC client for bouncer access. The main point of this is that the control over the Kiwi IRC connection is in our hands and to give us the opportunity of adding, removing or changing things about the bouncer connection without having to ask a third party.
+This is just a little web service that provides the correct data to Kiwi IRC for it to be able to connect users to our bouncer service. The app redirects all GET requests to the Kiwi IRC client for bouncer access.
 
-Thanks to @prawnsalad for making the first version of this in PHP and for creating the BNC compatible Kiwi IRC client.
+Thanks to [prawnsalad](https://github.com/prawnsalad) for making the first version of this in PHP and for creating the BNC compatible Kiwi IRC client.
+
+## Goal of this app
+
+The point of this app is that the Kiwi client that connects users to the bouncer can be controlled by us without having to go through third party every time. The Kiwi IRC client uses this endpoint to gather data like the server to connect and whether it should use SSL and makes a connection with the exact data it receives. This lets us change servers, ports or even allows for something like multiple bouncer servers for different users and the likes.
 
 ## Retrieving a bouncer response
 
