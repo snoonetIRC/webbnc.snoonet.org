@@ -8,6 +8,29 @@ Thanks to @prawnsalad for making the first version of this in PHP and for creati
 
 POST requests to the ``/request`` route need two paramters, the user and the password. The data should be the login data to the Snoonet bouncer that was previously received via MemoServ. It then return a server, a port, whether SSL should be enabled and the password string it builds up with the provided password and user.
 
+### Example request / response
+
+A curl request might look like this:
+
+```curl
+curl -i -X POST \
+   -d "user=username" \
+   -d "password=password" \
+ 'http://webbnc.snoonet.org/request'
+```
+
+The corresponding response would be something like this:
+
+```json
+{  
+    "server":"bnc.snoonet.org",
+    "port":5457,
+    "ssl":true,
+    "username":"username",
+    "password":"username/Snoonet:password"
+}
+```
+
 ## Copyright and license
 
 Copyright 2015 by Snoonet. Licensed under the [MIT license](https://github.com/snoonetIRC/webbnc.snoonet.org/blob/master/LICENSE).
