@@ -1,7 +1,7 @@
 workers 4
 threads 1, 6
 app_dir = File.expand_path("../..", __FILE__)
-shared_dir = "#{app_dir}/shared"
+shared_dir = "/tmp/kiwi-bnc"
 daemonize true
 environment "production"
 bind "unix://#{shared_dir}/sockets/puma.sock"
